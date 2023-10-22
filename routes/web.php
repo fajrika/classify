@@ -22,7 +22,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return '<a href="https://api.notion.com/v1/oauth/authorize?client_id=c4cb8c89-2a4f-4ad8-ba44-1669ffd0c3d5&response_type=code&owner=user&redirect_uri=https%3A%2F%2Fclassify.test%2F">Add to Notion</a>';
+    // return '<a href="https://api.notion.com/v1/oauth/authorize?client_id=c4cb8c89-2a4f-4ad8-ba44-1669ffd0c3d5&response_type=code&owner=user&redirect_uri=https%3A%2F%2Fclassify.test%2F">Add to Notion</a>';
     return view('pages.dashboard');
 });
 
