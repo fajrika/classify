@@ -22,12 +22,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    // return '<a href="https://api.notion.com/v1/oauth/authorize?client_id=c4cb8c89-2a4f-4ad8-ba44-1669ffd0c3d5&response_type=code&owner=user&redirect_uri=https%3A%2F%2Fclassify.test%2F">Add to Notion</a>';
-    return view('pages.dashboard');
+    return redirect()->route('dashboard.index');
 });
 
 
-Route::resource('dashboard', DashboardController::class);
+Route::get('dashboard', DashboardController::class)->name('dashboard.index');
 
 Route::as('master.')->prefix('/master')->group(function () {
     Route::resource('plant', PlantController::class);
@@ -38,7 +37,7 @@ Route::as('data.')->prefix('/data')->group(function () {
     Route::resource('plant', PlantDataTrainingController::class);
     Route::get('plant/{plant}/generate', [PlantDataTrainingController::class, 'generate'])->name('plant.generate.create');
     Route::put('plant/{plant}/generate', [PlantDataTrainingController::class, 'updateGenerate'])->name('plant.generate.update');
-    
+
     Route::get('plant/{plant}/manual', [PlantDataTrainingController::class, 'manual'])->name('plant.manual.create');
     Route::put('plant/{plant}/manual', [PlantDataTrainingController::class, 'updateManual'])->name('plant.manual.update');
     Route::resource('hardware', HardwareReportController::class);
